@@ -1,0 +1,33 @@
+name: "RTC Reward Action"
+description: "Automatically award RTC tokens when a PR is merged"
+author: "daletyler1737"
+branding:
+  icon: "award"
+  color: "green"
+inputs:
+  node-url:
+    description: "RTC node URL"
+    required: true
+    default: "https://50.28.86.131"
+  amount:
+    description: "RTC amount to award per merge"
+    required: true
+    default: "5"
+  wallet-from:
+    description: "Source wallet or account"
+    required: true
+  admin-key:
+    description: "Admin key for the RTC node"
+    required: true
+  dry-run:
+    description: "Enable dry-run mode (no actual transactions)"
+    required: false
+    default: "false"
+  min-contribution-lines:
+    description: "Minimum lines changed to qualify for reward"
+    required: false
+    default: "1"
+runs:
+  using: "node20"
+  main: "dist/index.js"
+  post: "dist/wait.js"
